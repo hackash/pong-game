@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pong Game</title>
+</head>
+<body>
+<!-- magic happens here -->
+<div id="container"></div>
+</body>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  #container {
+    width: 800px;
+    margin: 0 auto;
+  }
+
+</style>
+<!-- vendors -->
+<script src="bower_components/underscore/underscore-min.js"></script>
+<script src="bower_components/pixi.js/bin/pixi.js"></script>
+<!-- custom scripts here -->
+<script src="scripts/core/namespace.js"></script>
+<script src="scripts/core/config.js"></script>
+<script src="scripts/modules/resourceManager/index.js"></script>
+<script src="scripts/modules/gamePad/index.js"></script>
+<script src="scripts/modules/keyAdapter/index.js"></script>
+<script src="scripts/modules/ball/index.js"></script>
+<script src="scripts/app.js"></script>
+<!-- styles here -->
+</html>

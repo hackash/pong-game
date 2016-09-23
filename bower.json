@@ -1,0 +1,23 @@
+{
+  "name": "pong game",
+  "version": "0.0.0",
+  "authors": [
+    "Ashot <ashot.todo@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "underscore": "~1.8.3",
+    "pixi.js": "^4.0.1"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
