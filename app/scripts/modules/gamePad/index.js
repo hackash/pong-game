@@ -1,16 +1,17 @@
 PongGame.modules = PongGame.modules || {};
 
-(function (PIXI, globalConfig) {
+(function (PIXI, config) {
     PongGame.modules.GamePad = function (stage) {
         this.stage = stage;
         this.instance = null;
-        this.speed = 5;
+        this.speed = 10;
         this.config = {
+            x: 0,
             color: 0x6666FF,
             borderColor: 0x000000,
             radius: 5,
             opacity: .5
-        }
+        };
     };
 
     PongGame.modules.GamePad.prototype.state = _.noop;
@@ -29,11 +30,12 @@ PongGame.modules = PongGame.modules || {};
             return false;
         }
         this.flushState();
+        this.bindAction();
     };
 
 
     PongGame.modules.GamePad.prototype.hide = function () {
-        if (this.instance.alpha !== 0) {
+        if (this.instance.alpha > 0) {
             this.instance.alpha -= .01;
             return false;
         }
@@ -42,17 +44,21 @@ PongGame.modules = PongGame.modules || {};
 
 
     PongGame.modules.GamePad.prototype.moveRight = function () {
-        if (!this.instance.vx) {
-            this.instance.vx = 1;
+        if (this.collision.isFarFromRightBound()) {
+            if (!this.instance.vx) {
+                this.instance.vx = 1;
+            }
+            this.instance.x += this.speed;
         }
-        this.instance.x += this.speed;
     };
 
     PongGame.modules.GamePad.prototype.moveLeft = function () {
-        if (!this.instance.vx) {
-            this.instance.vx = 1;
+        if (this.collision.isFarFromLeftBound()) {
+            if (!this.instance.vx) {
+                this.instance.vx = 1;
+            }
+            this.instance.x -= this.speed;
         }
-        this.instance.x -= this.speed;
     };
 
 
@@ -81,16 +87,17 @@ PongGame.modules = PongGame.modules || {};
     };
 
     PongGame.modules.GamePad.prototype.init = function () {
-        this.config.width = Math.round(globalConfig.display.width / 4);
+        this.config.width = Math.round(config.display.width / 4);
         this.config.height = Math.round(40);
-        this.config.x = Math.round((globalConfig.display.width / 2) - ( this.config.width / 2));
-        this.config.y = Math.round((globalConfig.display.height) - ( this.config.height));
+        this.config.y = Math.round((config.display.height) - ( this.config.height));
 
         var rect = new PIXI.Graphics();
         rect.alpha = 0;
         rect.beginFill(this.config.color, 1);
         rect.lineStyle(4, this.config.borderColor, 1);
         this.instance = rect.drawRoundedRect(this.config.x, this.config.y, this.config.width, this.config.height, this.config.radius);
+        this.collision = new PongGame.modules.Collision(rect);
+        this.collision.setBounds(0, 0, {x : config.display.width});
         this.stage.addChild(rect);
         this.setState(this.show);
         return this;
