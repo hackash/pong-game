@@ -14,15 +14,15 @@ PongGame.modules = PongGame.modules || {};
     };
 
     PongGame.modules.Collision.prototype.isFarFromRightBound = function () {
-        return (this.figure.x + this.figure.width) < this.bounds.frame.x;
+        return (this.figure.x + this.figure.width) >= this.bounds.frame.x;
     };
 
     PongGame.modules.Collision.prototype.isFarFromLeftBound = function () {
-        return this.figure.x > this.bounds.x;
+        return this.figure.x <= this.bounds.x;
     };
 
     PongGame.modules.Collision.prototype.isFarFromTopBound = function () {
-        return this.figure.y > this.bounds.y;
+        return this.figure.y <= this.bounds.y;
     };
 
     PongGame.modules.Collision.prototype.isFarFromBottomBound = function () {

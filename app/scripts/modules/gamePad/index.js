@@ -44,7 +44,7 @@ PongGame.modules = PongGame.modules || {};
 
 
     PongGame.modules.GamePad.prototype.moveRight = function () {
-        if (this.collision.isFarFromRightBound()) {
+        if (!this.collision.isFarFromRightBound()) {
             if (!this.instance.vx) {
                 this.instance.vx = 1;
             }
@@ -53,7 +53,7 @@ PongGame.modules = PongGame.modules || {};
     };
 
     PongGame.modules.GamePad.prototype.moveLeft = function () {
-        if (this.collision.isFarFromLeftBound()) {
+        if (!this.collision.isFarFromLeftBound()) {
             if (!this.instance.vx) {
                 this.instance.vx = 1;
             }
