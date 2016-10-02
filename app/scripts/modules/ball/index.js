@@ -74,10 +74,10 @@ PongGame.modules = PongGame.modules || {};
     };
 
     PongGame.modules.Ball.prototype.checkCollision = function () {
-        if (this.collision.isFarFromLeftBound() || this.collision.isFarFromRightBound()) {
+        if (this.collision.isOnLeftBound() || this.collision.isOnRightBound()) {
             this.instance.vx = -this.instance.vx;
         }
-        if (this.collision.isFarFromBottomBound() || this.collision.isFarFromTopBound()) {
+        if (this.collision.isFarFromBottomBound() || this.collision.isOnTopBound()) {
             this.instance.vy = -this.instance.vy;
         }
     };

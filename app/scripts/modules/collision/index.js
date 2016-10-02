@@ -1,6 +1,6 @@
 PongGame.modules = PongGame.modules || {};
 
-(function (PIXI, config) {
+(function () {
     PongGame.modules.Collision = function (figure) {
         this.bounds = {
             frame: {
@@ -13,19 +13,19 @@ PongGame.modules = PongGame.modules || {};
         this.figure = figure;
     };
 
-    PongGame.modules.Collision.prototype.isFarFromRightBound = function () {
+    PongGame.modules.Collision.prototype.isOnRightBound = function () {
         return (this.figure.x + this.figure.width) >= this.bounds.frame.x;
     };
 
-    PongGame.modules.Collision.prototype.isFarFromLeftBound = function () {
+    PongGame.modules.Collision.prototype.isOnLeftBound = function () {
         return this.figure.x <= this.bounds.x;
     };
 
-    PongGame.modules.Collision.prototype.isFarFromTopBound = function () {
+    PongGame.modules.Collision.prototype.isOnTopBound = function () {
         return this.figure.y <= this.bounds.y;
     };
 
-    PongGame.modules.Collision.prototype.isFarFromBottomBound = function () {
+    PongGame.modules.Collision.prototype.isOnBottomBound = function () {
         return ((this.figure.y + this.figure.height) + 1) < this.bounds.frame.y;
     };
 
@@ -35,4 +35,4 @@ PongGame.modules = PongGame.modules || {};
         this.bounds.frame = frame;
     };
 
-}(PIXI, PongGame.Config));
+}());

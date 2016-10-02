@@ -14,7 +14,7 @@
         resourceManager.loadResources(function () {
             var gamePad = new PongGame.modules.GamePad(stage).init();
             var ball = new PongGame.modules.Ball(PIXI.loader.resources[config.resources.ball.path].texture, stage, gamePad.instance).init();
-
+            var wall = new PongGame.modules.Wall(PIXI.loader.resources[config.resources.rock.path].texture, stage).init();
             function animate() {
                 gamePad.state();
                 ball.state();

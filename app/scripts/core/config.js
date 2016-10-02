@@ -12,6 +12,9 @@ PongGame.Config = (function () {
         resources: {
             ball: {
                 path: 'images/ball.png'
+            },
+            rock: {
+                path: 'images/rock.png'
             }
         }
     };

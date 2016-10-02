@@ -44,7 +44,7 @@ PongGame.modules = PongGame.modules || {};
 
 
     PongGame.modules.GamePad.prototype.moveRight = function () {
-        if (!this.collision.isFarFromRightBound()) {
+        if (!this.collision.isOnRightBound()) {
             if (!this.instance.vx) {
                 this.instance.vx = 1;
             }
@@ -53,7 +53,7 @@ PongGame.modules = PongGame.modules || {};
     };
 
     PongGame.modules.GamePad.prototype.moveLeft = function () {
-        if (!this.collision.isFarFromLeftBound()) {
+        if (!this.collision.isOnLeftBound()) {
             if (!this.instance.vx) {
                 this.instance.vx = 1;
             }
@@ -97,7 +97,7 @@ PongGame.modules = PongGame.modules || {};
         rect.lineStyle(4, this.config.borderColor, 1);
         this.instance = rect.drawRoundedRect(this.config.x, this.config.y, this.config.width, this.config.height, this.config.radius);
         this.collision = new PongGame.modules.Collision(rect);
-        this.collision.setBounds(0, 0, {x : config.display.width});
+        this.collision.setBounds(0, 0, {x: config.display.width});
         this.stage.addChild(rect);
         this.setState(this.show);
         return this;
